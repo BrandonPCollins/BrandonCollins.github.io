@@ -19,7 +19,6 @@
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   html { scroll-behavior: smooth; }
 
   body {
@@ -30,7 +29,7 @@
     line-height: 1.7;
   }
 
-  /* ── NAV ── */
+  /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0;
     z-index: 100;
@@ -40,7 +39,6 @@
     backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--border);
   }
-
   .nav-name {
     font-family: var(--font-serif);
     font-size: 1.1rem;
@@ -48,7 +46,6 @@
     letter-spacing: 0.04em;
     text-decoration: none;
   }
-
   .nav-links { display: flex; gap: 2rem; list-style: none; }
   .nav-links a {
     color: var(--text-muted);
@@ -60,7 +57,7 @@
   }
   .nav-links a:hover { color: var(--accent); }
 
-  /* ── HERO ── */
+  /* HERO */
   #hero {
     min-height: 100vh;
     display: flex; flex-direction: column; justify-content: center;
@@ -69,7 +66,6 @@
     margin: 0 auto;
     position: relative;
   }
-
   .hero-tag {
     font-size: 0.8rem;
     letter-spacing: 0.2em;
@@ -77,7 +73,6 @@
     color: var(--accent);
     margin-bottom: 1.5rem;
   }
-
   h1 {
     font-family: var(--font-serif);
     font-size: clamp(2.8rem, 6vw, 5rem);
@@ -86,17 +81,14 @@
     color: var(--text);
     margin-bottom: 1.5rem;
   }
-
   h1 span { color: var(--accent); }
-
   .hero-bio {
     font-size: 1.1rem;
     color: var(--text-muted);
-    max-width: 540px;
+    max-width: 560px;
     margin-bottom: 2.5rem;
     line-height: 1.8;
   }
-
   .btn {
     display: inline-block;
     padding: 0.75rem 1.8rem;
@@ -112,7 +104,6 @@
   .btn:hover { background: var(--accent); color: var(--bg); }
   .btn-ghost { border-color: var(--border); color: var(--text-muted); }
   .btn-ghost:hover { background: var(--border); color: var(--text); }
-
   .hero-rule {
     position: absolute; bottom: 3rem; left: 3rem;
     display: flex; align-items: center; gap: 1rem;
@@ -123,10 +114,9 @@
     content: ''; display: block; width: 40px; height: 1px; background: var(--text-dim);
   }
 
-  /* ── SECTIONS ── */
+  /* SECTIONS */
   section { padding: 6rem 3rem; }
   .section-inner { max-width: 900px; margin: 0 auto; }
-
   .section-label {
     font-size: 0.75rem;
     letter-spacing: 0.2em;
@@ -134,7 +124,6 @@
     color: var(--accent-dim);
     margin-bottom: 0.5rem;
   }
-
   h2 {
     font-family: var(--font-serif);
     font-size: clamp(1.8rem, 3vw, 2.6rem);
@@ -145,24 +134,45 @@
     border-bottom: 1px solid var(--border);
   }
 
-  /* ── PROJECTS ── */
+  /* STAT BAR */
+  .stat-bar {
+    display: flex;
+    gap: 3rem;
+    margin-bottom: 3rem;
+    padding: 1.5rem 2rem;
+    border: 1px solid var(--border);
+    background: var(--surface);
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    color: var(--accent);
+    display: block;
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+  .stat-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-dim);
+  }
+
+  /* PROJECTS */
   #projects { background: var(--surface); }
-
   .project-grid { display: grid; gap: 1.5px; }
-
   .project-card {
     background: var(--bg);
-    padding: 2rem 2rem 2rem 2rem;
+    padding: 2rem;
     display: grid;
     grid-template-columns: 1fr auto;
     gap: 1rem;
     align-items: start;
     border-left: 3px solid transparent;
     transition: border-color 0.2s;
-    cursor: default;
   }
   .project-card:hover { border-left-color: var(--accent); }
-
   .project-type {
     font-size: 0.72rem;
     letter-spacing: 0.15em;
@@ -170,7 +180,6 @@
     color: var(--accent-dim);
     margin-bottom: 0.4rem;
   }
-
   .project-card h3 {
     font-family: var(--font-serif);
     font-size: 1.3rem;
@@ -178,14 +187,7 @@
     color: var(--text);
     margin-bottom: 0.6rem;
   }
-
-  .project-card p {
-    color: var(--text-muted);
-    font-size: 0.92rem;
-    max-width: 580px;
-    margin-bottom: 1rem;
-  }
-
+  .project-card p { color: var(--text-muted); font-size: 0.92rem; max-width: 580px; margin-bottom: 1rem; }
   .tag-row { display: flex; flex-wrap: wrap; gap: 0.4rem; }
   .tag {
     font-size: 0.72rem;
@@ -196,7 +198,6 @@
     padding: 0.2rem 0.6rem;
     border-radius: 2px;
   }
-
   .project-link {
     color: var(--accent);
     text-decoration: none;
@@ -210,16 +211,14 @@
   }
   .project-link:hover { opacity: 1; }
 
-  /* ── WRITING SAMPLES ── */
+  /* WRITING SAMPLES */
   .samples-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-
   .sample-card {
     border: 1px solid var(--border);
     padding: 1.8rem;
     transition: border-color 0.2s;
   }
   .sample-card:hover { border-color: var(--accent-dim); }
-
   .sample-card h3 {
     font-family: var(--font-serif);
     font-weight: normal;
@@ -234,7 +233,6 @@
     margin-bottom: 0.8rem;
   }
   .sample-card p { color: var(--text-muted); font-size: 0.9rem; }
-
   .sample-excerpt {
     margin-top: 1rem;
     padding: 1rem;
@@ -247,9 +245,8 @@
     line-height: 1.8;
   }
 
-  /* ── DESIGN BREAKDOWN ── */
+  /* DESIGN BREAKDOWN */
   #breakdown { background: var(--surface); }
-
   .breakdown-block { margin-bottom: 3rem; }
   .breakdown-block h3 {
     font-family: var(--font-serif);
@@ -258,8 +255,7 @@
     color: var(--accent);
     margin-bottom: 0.8rem;
   }
-  .breakdown-block p { color: var(--text-muted); max-width: 680px; }
-
+  .breakdown-block p { color: var(--text-muted); max-width: 680px; line-height: 1.8; }
   .callout {
     margin-top: 1rem;
     border: 1px solid var(--border);
@@ -274,9 +270,9 @@
   .callout p { color: var(--text-muted); font-size: 0.9rem; margin: 0; }
   .callout strong { color: var(--text); }
 
-  /* ── ABOUT ── */
+  /* ABOUT */
   .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
-  .about-text p { color: var(--text-muted); margin-bottom: 1rem; }
+  .about-text p { color: var(--text-muted); margin-bottom: 1rem; line-height: 1.8; }
   .skills-col h3 {
     font-size: 0.75rem;
     letter-spacing: 0.15em;
@@ -293,7 +289,7 @@
   }
   .skill-item span:last-child { color: var(--text-dim); font-size: 0.8rem; }
 
-  /* ── CONTACT ── */
+  /* CONTACT */
   #contact { text-align: center; }
   #contact .section-inner { max-width: 600px; }
   #contact p { color: var(--text-muted); margin-bottom: 2rem; font-size: 1.05rem; }
@@ -310,7 +306,6 @@
   }
   .contact-links a:hover { color: var(--accent); border-color: var(--accent); }
 
-  /* ── FOOTER ── */
   footer {
     text-align: center;
     padding: 2rem;
@@ -320,7 +315,6 @@
     letter-spacing: 0.08em;
   }
 
-  /* ── RESPONSIVE ── */
   @media (max-width: 700px) {
     nav { padding: 1rem 1.5rem; }
     .nav-links { gap: 1.2rem; }
@@ -329,12 +323,12 @@
     .samples-grid, .about-grid { grid-template-columns: 1fr; }
     .project-card { grid-template-columns: 1fr; }
     .hero-rule { left: 1.5rem; }
+    .stat-bar { flex-wrap: wrap; gap: 1.5rem; }
   }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <a href="#hero" class="nav-name">Brandon Collins</a>
   <ul class="nav-links">
@@ -346,13 +340,13 @@
   </ul>
 </nav>
 
-<!-- HERO -->
 <section id="hero">
   <p class="hero-tag">Narrative Designer &amp; Game Writer</p>
   <h1>Stories that<br><span>live inside systems.</span></h1>
   <p class="hero-bio">
-    I design narrative for games — branching dialogue, event-driven storytelling, and worlds
-    that reward players who pay attention. Currently seeking roles in narrative design and game writing.
+    I write and design narrative for games — branching event chains, character-driven dialogue, 
+    and worlds that reward players who pay attention. I've been a core contributor to CK3AGOT, 
+    one of the most subscribed total conversion mods on the Steam Workshop, since before its launch.
   </p>
   <div>
     <a href="#projects" class="btn">See My Work</a>
@@ -361,55 +355,58 @@
   <div class="hero-rule">Scroll to explore</div>
 </section>
 
-<!-- PROJECTS -->
 <section id="projects">
   <div class="section-inner">
     <p class="section-label">Selected Work</p>
     <h2>Projects</h2>
 
-    <div class="project-grid">
+    <div class="stat-bar">
+      <div class="stat">
+        <span class="stat-num">497K</span>
+        <span class="stat-label">Current Subscribers</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">877K</span>
+        <span class="stat-label">Unique Visitors</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">130+</span>
+        <span class="stat-label">Updates Shipped</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">38K</span>
+        <span class="stat-label">Favourites</span>
+      </div>
+    </div>
 
+    <div class="project-grid">
       <div class="project-card">
         <div>
-          <p class="project-type">CK3 Mod — Shipped</p>
-          <h3>[Your Mod Name Here]</h3>
+          <p class="project-type">CK3 Total Conversion Mod — Shipped · Pre-Launch Contributor</p>
+          <h3>A Game of Thrones: CK3AGOT</h3>
           <p>
-            A full content mod for Crusader Kings III featuring original event chains,
-            branching dialogue, flavor text, and new mechanics. Contributed [X] events
-            and [Y] decisions over [timeframe] of active development.
+            A full total conversion of Crusader Kings III set in the world of George R.R. Martin's 
+            A Song of Ice and Fire. One of the most subscribed mods on the Steam Workshop, 
+            with nearly half a million active players. I joined the team before launch and have 
+            contributed across narrative, systems, and UI — writing and scripting event chains, 
+            designing the Kingsguard system, expanding the council mechanics and GUI, 
+            building bookmarks, and authoring content for the Ninepenny Kings and Blackfyre Rebellion scenarios.
           </p>
           <div class="tag-row">
             <span class="tag">Event Design</span>
             <span class="tag">Branching Narrative</span>
+            <span class="tag">Systems Design</span>
+            <span class="tag">GUI Scripting</span>
             <span class="tag">Worldbuilding</span>
             <span class="tag">CK3 Script</span>
-            <span class="tag">Long-form Contribution</span>
           </div>
         </div>
-        <a href="#" class="project-link">Steam Workshop ↗</a>
+        <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2962333032" target="_blank" class="project-link">Steam Workshop ↗</a>
       </div>
-
-      <div class="project-card">
-        <div>
-          <p class="project-type">Spec Project</p>
-          <h3>Untitled Spec Piece</h3>
-          <p>
-            Placeholder for a second project — a spec narrative design document, a Twine demo,
-            or another piece of work. Even a well-written GDD for an original concept works here.
-          </p>
-          <div class="tag-row">
-            <span class="tag">Game Design</span>
-            <span class="tag">Writing</span>
-          </div>
-        </div>
-        <a href="#" class="project-link">View ↗</a>
-      </div>
-
     </div>
   </div>
 </section>
 
-<!-- WRITING SAMPLES -->
 <section id="writing">
   <div class="section-inner">
     <p class="section-label">Writing</p>
@@ -417,38 +414,62 @@
     <div class="samples-grid">
 
       <div class="sample-card">
-        <h3>Event: [Title from mod]</h3>
-        <p class="meta">CK3 Mod · Event Chain · Drama</p>
-        <p>A short description of what this event does, who it triggers for, and what choices it presents.</p>
+        <h3>An Oath Fulfilled</h3>
+        <p class="meta">CK3AGOT · Kingsguard Event Chain · Drama</p>
+        <p>
+          Triggers when a Kingsguard member dies or is stripped of their cloak. The event 
+          adapts its tone — from eulogy to disgrace — and scales its prose to reflect the 
+          fallen knight's actual in-game skill level, before presenting the king with 
+          meaningfully distinct recruitment choices.
+        </p>
         <div class="sample-excerpt">
-          "Paste a line or two of your actual event flavor text here. Even one strong sentence sets the tone."
+          "She was a warrior of incredible renown. Those who had the fortune to see her with a blade 
+          in hand described her as having fought like the Warrior incarnate. Her steel now rests 
+          alongside her, but it will echo in the minds of young warriors across the realm for centuries."
         </div>
       </div>
 
       <div class="sample-card">
-        <h3>Dialogue Sample</h3>
-        <p class="meta">Original · Branching Dialogue · RPG</p>
-        <p>An original or mod-derived dialogue exchange showing character voice, player agency, and consequence.</p>
+        <h3>The Throne Denies Her</h3>
+        <p class="meta">CK3AGOT · Flavor Event · Dark Comedy</p>
+        <p>
+          A ruler seated on the Iron Throne is cut by its blades mid-court session — 
+          and the smallfolk immediately spin it into an omen of illegitimacy. Plays with 
+          the in-world superstition that the Throne itself judges kings, and uses the 
+          player's existing court context to make the moment land.
+        </p>
         <div class="sample-excerpt">
-          "A short excerpt from a dialogue exchange — ideally one that shows a meaningful player choice."
+          "Suddenly a white heat streaks across my arm, and I recoil in pain... 'She has been rebuked!' 
+          calls another. '[Name] is no true ruler!'"
         </div>
       </div>
 
       <div class="sample-card">
-        <h3>Worldbuilding Extract</h3>
-        <p class="meta">Original · Lore · World Design</p>
-        <p>A piece of in-world text — a codex entry, a letter, a document — that reveals setting through voice.</p>
+        <h3>The Teats</h3>
+        <p class="meta">CK3AGOT · Flavor Event · Comedy</p>
+        <p>
+          A lighthearted travel event triggered when riding through the Riverlands with a lover. 
+          Shows range — bawdy humor delivered with restraint, player choice that's inconsequential 
+          but characterful, and the ability to write comedy that fits an otherwise serious setting.
+        </p>
         <div class="sample-excerpt">
-          "Lore writing tends to shine in short form. A single paragraph that feels like it belongs to a real world."
+          "This particular tract of land is popularly known as the Teats, for its not-so-subtle 
+          resemblance to a woman's bodice. Though tilting your head suddenly they remind you of a 
+          pair that you are intimately familiar with."
         </div>
       </div>
 
       <div class="sample-card">
-        <h3>Additional Sample</h3>
-        <p class="meta">TBD</p>
-        <p>Room for a fourth sample — barks, item descriptions, a quest summary, or anything that shows range.</p>
+        <h3>Vows Rejected</h3>
+        <p class="meta">CK3AGOT · Dialogue · Character Voice</p>
+        <p>
+          A Kingsguard candidate refuses the appointment. Each rejection line is tied to a 
+          specific character trait — lust, ambition, hatred, faith — giving players a moment 
+          of character revelation rather than a generic refusal.
+        </p>
         <div class="sample-excerpt">
-          "Even ambient world text or item flavor copy shows that you understand how writing functions in-game."
+          "My life has far greater purpose ahead of it than standing by your chamberpot while you 
+          scutter out your latest suckling goose strips."
         </div>
       </div>
 
@@ -456,42 +477,60 @@
   </div>
 </section>
 
-<!-- DESIGN BREAKDOWN -->
 <section id="breakdown">
   <div class="section-inner">
     <p class="section-label">Process</p>
     <h2>Design Thinking</h2>
 
     <div class="breakdown-block">
-      <h3>Why I designed [Event/System] the way I did</h3>
+      <h3>The Kingsguard System: Narrative Serving Mechanics</h3>
       <p>
-        This is the most important section for a hybrid role. Walk through one decision from your CK3 mod —
-        not just what you built, but why. What player experience were you designing toward?
-        What constraints were you working within? What did you cut, and why?
+        The Kingsguard in CK3AGOT isn't just a flavour feature — it's a full system with 
+        recruitment loops, council integration, succession events, and edge cases like renegade 
+        knights and family member reactions. My job was to make sure every mechanical state had 
+        a narrative moment attached to it that felt earned rather than procedural.
+      </p>
+      <p style="margin-top:1rem;">
+        The vacancy event, for example, branches not just on how a knight left (death vs. disgrace) 
+        but on their actual skill level — a legendary warrior gets a genuine eulogy, a poor fit gets 
+        quiet acknowledgement. The player reads the quality of their own court back through the prose.
       </p>
       <div class="callout">
         <div class="callout-icon">◆</div>
         <p>
-          <strong>Example framing:</strong> "I wanted players to feel the weight of [X] without stopping
-          the pacing of the event chain, so I moved [decision] to a follow-up event triggered 30 days later —
-          giving the player time to forget before the consequence landed."
+          <strong>Design principle:</strong> The text should reflect the game state, not ignore it. 
+          If a Kingsguard was barely adequate, the event should feel different than if you just lost 
+          your greatest champion. Branching prose on skill tier was the solution — same event, 
+          four different emotional registers.
         </p>
       </div>
     </div>
 
     <div class="breakdown-block">
-      <h3>Narrative systems I worked with</h3>
+      <h3>Writing Comedy Inside a Serious Setting</h3>
       <p>
-        Briefly describe the CK3 scripting system and how you used it — triggers, effects, mtth weights,
-        flags. Hiring managers who don't know CK3 will still understand that you think in systems.
-        Those who do know it will be impressed.
+        Events like The Teats and the drunken Kingsguard walk a line that's easy to get wrong — 
+        too broad and they break the setting, too restrained and they're not funny. The rule I 
+        worked to was that the humor had to be grounded in something real about the world or the 
+        characters. The Teats works because the rename mechanic gives the joke a mechanical 
+        punchline. The drunken knight works because his behavior is embarrassing to the player's 
+        court, not just played for laughs in a vacuum.
+      </p>
+    </div>
+
+    <div class="breakdown-block">
+      <h3>Scripting What I Write</h3>
+      <p>
+        Every event I've written on CK3AGOT I've also scripted — handling triggers, effects, 
+        scoped variables, mtth weights, and flag logic. Understanding the technical layer has 
+        made me a better narrative designer: I know what's cheap to branch and what costs, 
+        which shapes how I write choices before I ever open a text file.
       </p>
     </div>
 
   </div>
 </section>
 
-<!-- ABOUT -->
 <section id="about">
   <div class="section-inner">
     <p class="section-label">Background</p>
@@ -499,33 +538,35 @@
     <div class="about-grid">
       <div class="about-text">
         <p>
-          [2–3 sentences about who you are. Mention your career switch honestly — it can be a strength.
-          What did you do before, and how does it inform your design thinking?]
+          I'm Brandon Collins — a narrative designer and game writer making a career switch 
+          into the games industry, backed by years of real shipped work on one of the biggest 
+          mods in the CK3 community.
         </p>
         <p>
-          I've spent [timeframe] contributing to [mod name], writing event chains and designing
-          systems for [briefly describe mod scope]. That work taught me how narrative and mechanics
-          have to earn each other's trust.
+          I've been a core contributor to CK3AGOT since before launch, writing and scripting 
+          event chains, designing systems, and building content across the full breadth of 
+          what a total conversion mod requires. I've worked on everything from moment-to-moment 
+          character drama to broad mechanical systems, and I script everything I write.
         </p>
         <p>
-          I'm currently looking for roles in narrative design and game writing where I can
-          help build worlds that feel alive to players.
+          I'm currently looking for roles in narrative design and game writing — full-time, 
+          contract, or remote — where I can help build worlds that feel alive to the people playing them.
         </p>
       </div>
       <div class="skills-col">
         <h3>Skills &amp; Tools</h3>
         <div class="skill-item"><span>Narrative Design</span><span>Primary</span></div>
-        <div class="skill-item"><span>Branching Dialogue</span><span>Primary</span></div>
+        <div class="skill-item"><span>Event &amp; Dialogue Writing</span><span>Primary</span></div>
+        <div class="skill-item"><span>Branching Systems</span><span>Primary</span></div>
+        <div class="skill-item"><span>CK3 Script / Paradox Modding</span><span>Experienced</span></div>
+        <div class="skill-item"><span>GUI Scripting</span><span>Experienced</span></div>
         <div class="skill-item"><span>Worldbuilding &amp; Lore</span><span>Primary</span></div>
-        <div class="skill-item"><span>CK3 Script / Paradox modding</span><span>Experienced</span></div>
-        <div class="skill-item"><span>Game Design Documentation</span><span>Developing</span></div>
-        <div class="skill-item"><span>Twine / Ink</span><span>Familiar</span></div>
+        <div class="skill-item"><span>GitHub / Version Control</span><span>Experienced</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
   <div class="section-inner">
     <p class="section-label">Get in Touch</p>
@@ -534,8 +575,8 @@
     <div class="contact-links">
       <a href="mailto:your@email.com">your@email.com</a>
       <a href="#">LinkedIn</a>
-      <a href="#">GitHub</a>
-      <a href="#">Mod Page</a>
+      <a href="https://github.com/BrandonPCollins" target="_blank">GitHub</a>
+      <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2962333032" target="_blank">CK3AGOT Mod</a>
     </div>
   </div>
 </section>
@@ -546,4 +587,3 @@
 
 </body>
 </html>
-
