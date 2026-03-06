@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[Your Name] — Narrative Designer</title>
+<style>
+  :root {
+    --bg: #0e0c0a;
+    --surface: #161310;
+    --border: #2a2420;
+    --accent: #c9943a;
+    --accent-dim: #8a6325;
+    --text: #e8e0d4;
+    --text-muted: #8a8078;
+    --text-dim: #5a5450;
+    --font-serif: 'Georgia', 'Times New Roman', serif;
+    --font-sans: 'Segoe UI', system-ui, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.2rem 3rem;
+    background: rgba(14,12,10,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-name {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    color: var(--accent);
+    letter-spacing: 0.04em;
+    text-decoration: none;
+  }
+
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 8rem 3rem 4rem;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .hero-tag {
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+  }
+
+  h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    line-height: 1.1;
+    font-weight: normal;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+  }
+
+  h1 span { color: var(--accent); }
+
+  .hero-bio {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    max-width: 540px;
+    margin-bottom: 2.5rem;
+    line-height: 1.8;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 0.75rem 1.8rem;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: background 0.2s, color 0.2s;
+    margin-right: 1rem;
+  }
+  .btn:hover { background: var(--accent); color: var(--bg); }
+  .btn-ghost { border-color: var(--border); color: var(--text-muted); }
+  .btn-ghost:hover { background: var(--border); color: var(--text); }
+
+  .hero-rule {
+    position: absolute; bottom: 3rem; left: 3rem;
+    display: flex; align-items: center; gap: 1rem;
+    color: var(--text-dim); font-size: 0.75rem; letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .hero-rule::before {
+    content: ''; display: block; width: 40px; height: 1px; background: var(--text-dim);
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 6rem 3rem; }
+  .section-inner { max-width: 900px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent-dim);
+    margin-bottom: 0.5rem;
+  }
+
+  h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: normal;
+    color: var(--text);
+    margin-bottom: 3rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* ── PROJECTS ── */
+  #projects { background: var(--surface); }
+
+  .project-grid { display: grid; gap: 1.5px; }
+
+  .project-card {
+    background: var(--bg);
+    padding: 2rem 2rem 2rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    align-items: start;
+    border-left: 3px solid transparent;
+    transition: border-color 0.2s;
+    cursor: default;
+  }
+  .project-card:hover { border-left-color: var(--accent); }
+
+  .project-type {
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent-dim);
+    margin-bottom: 0.4rem;
+  }
+
+  .project-card h3 {
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+    font-weight: normal;
+    color: var(--text);
+    margin-bottom: 0.6rem;
+  }
+
+  .project-card p {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    max-width: 580px;
+    margin-bottom: 1rem;
+  }
+
+  .tag-row { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    border: 1px solid var(--border);
+    padding: 0.2rem 0.6rem;
+    border-radius: 2px;
+  }
+
+  .project-link {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    margin-top: 0.2rem;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+  }
+  .project-link:hover { opacity: 1; }
+
+  /* ── WRITING SAMPLES ── */
+  .samples-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+
+  .sample-card {
+    border: 1px solid var(--border);
+    padding: 1.8rem;
+    transition: border-color 0.2s;
+  }
+  .sample-card:hover { border-color: var(--accent-dim); }
+
+  .sample-card h3 {
+    font-family: var(--font-serif);
+    font-weight: normal;
+    font-size: 1.1rem;
+    margin-bottom: 0.4rem;
+  }
+  .sample-card .meta {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.8rem;
+  }
+  .sample-card p { color: var(--text-muted); font-size: 0.9rem; }
+
+  .sample-excerpt {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: var(--surface);
+    border-left: 2px solid var(--accent-dim);
+    font-family: var(--font-serif);
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-style: italic;
+    line-height: 1.8;
+  }
+
+  /* ── DESIGN BREAKDOWN ── */
+  #breakdown { background: var(--surface); }
+
+  .breakdown-block { margin-bottom: 3rem; }
+  .breakdown-block h3 {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-weight: normal;
+    color: var(--accent);
+    margin-bottom: 0.8rem;
+  }
+  .breakdown-block p { color: var(--text-muted); max-width: 680px; }
+
+  .callout {
+    margin-top: 1rem;
+    border: 1px solid var(--border);
+    padding: 1.2rem 1.5rem;
+    background: var(--bg);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.2rem;
+    align-items: start;
+  }
+  .callout-icon { color: var(--accent); font-size: 1.2rem; padding-top: 0.1rem; }
+  .callout p { color: var(--text-muted); font-size: 0.9rem; margin: 0; }
+  .callout strong { color: var(--text); }
+
+  /* ── ABOUT ── */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .about-text p { color: var(--text-muted); margin-bottom: 1rem; }
+  .skills-col h3 {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent-dim);
+    margin-bottom: 1rem;
+  }
+  .skill-item {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+  .skill-item span:last-child { color: var(--text-dim); font-size: 0.8rem; }
+
+  /* ── CONTACT ── */
+  #contact { text-align: center; }
+  #contact .section-inner { max-width: 600px; }
+  #contact p { color: var(--text-muted); margin-bottom: 2rem; font-size: 1.05rem; }
+  .contact-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+  .contact-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .contact-links a:hover { color: var(--accent); border-color: var(--accent); }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-dim);
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 700px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.2rem; }
+    section { padding: 4rem 1.5rem; }
+    #hero { padding: 7rem 1.5rem 4rem; }
+    .samples-grid, .about-grid { grid-template-columns: 1fr; }
+    .project-card { grid-template-columns: 1fr; }
+    .hero-rule { left: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-name">[Your Name]</a>
+  <ul class="nav-links">
+    <li><a href="#projects">Work</a></li>
+    <li><a href="#writing">Writing</a></li>
+    <li><a href="#breakdown">Design</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <p class="hero-tag">Narrative Designer &amp; Game Writer</p>
+  <h1>Stories that<br><span>live inside systems.</span></h1>
+  <p class="hero-bio">
+    I design narrative for games — branching dialogue, event-driven storytelling, and worlds
+    that reward players who pay attention. Currently seeking roles in narrative design and game writing.
+  </p>
+  <div>
+    <a href="#projects" class="btn">See My Work</a>
+    <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+  </div>
+  <div class="hero-rule">Scroll to explore</div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-inner">
+    <p class="section-label">Selected Work</p>
+    <h2>Projects</h2>
+
+    <div class="project-grid">
+
+      <div class="project-card">
+        <div>
+          <p class="project-type">CK3 Mod — Shipped</p>
+          <h3>[Your Mod Name Here]</h3>
+          <p>
+            A full content mod for Crusader Kings III featuring original event chains,
+            branching dialogue, flavor text, and new mechanics. Contributed [X] events
+            and [Y] decisions over [timeframe] of active development.
+          </p>
+          <div class="tag-row">
+            <span class="tag">Event Design</span>
+            <span class="tag">Branching Narrative</span>
+            <span class="tag">Worldbuilding</span>
+            <span class="tag">CK3 Script</span>
+            <span class="tag">Long-form Contribution</span>
+          </div>
+        </div>
+        <a href="#" class="project-link">Steam Workshop ↗</a>
+      </div>
+
+      <div class="project-card">
+        <div>
+          <p class="project-type">Spec Project</p>
+          <h3>Untitled Spec Piece</h3>
+          <p>
+            Placeholder for a second project — a spec narrative design document, a Twine demo,
+            or another piece of work. Even a well-written GDD for an original concept works here.
+          </p>
+          <div class="tag-row">
+            <span class="tag">Game Design</span>
+            <span class="tag">Writing</span>
+          </div>
+        </div>
+        <a href="#" class="project-link">View ↗</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WRITING SAMPLES -->
+<section id="writing">
+  <div class="section-inner">
+    <p class="section-label">Writing</p>
+    <h2>Samples</h2>
+    <div class="samples-grid">
+
+      <div class="sample-card">
+        <h3>Event: [Title from mod]</h3>
+        <p class="meta">CK3 Mod · Event Chain · Drama</p>
+        <p>A short description of what this event does, who it triggers for, and what choices it presents.</p>
+        <div class="sample-excerpt">
+          "Paste a line or two of your actual event flavor text here. Even one strong sentence sets the tone."
+        </div>
+      </div>
+
+      <div class="sample-card">
+        <h3>Dialogue Sample</h3>
+        <p class="meta">Original · Branching Dialogue · RPG</p>
+        <p>An original or mod-derived dialogue exchange showing character voice, player agency, and consequence.</p>
+        <div class="sample-excerpt">
+          "A short excerpt from a dialogue exchange — ideally one that shows a meaningful player choice."
+        </div>
+      </div>
+
+      <div class="sample-card">
+        <h3>Worldbuilding Extract</h3>
+        <p class="meta">Original · Lore · World Design</p>
+        <p>A piece of in-world text — a codex entry, a letter, a document — that reveals setting through voice.</p>
+        <div class="sample-excerpt">
+          "Lore writing tends to shine in short form. A single paragraph that feels like it belongs to a real world."
+        </div>
+      </div>
+
+      <div class="sample-card">
+        <h3>Additional Sample</h3>
+        <p class="meta">TBD</p>
+        <p>Room for a fourth sample — barks, item descriptions, a quest summary, or anything that shows range.</p>
+        <div class="sample-excerpt">
+          "Even ambient world text or item flavor copy shows that you understand how writing functions in-game."
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- DESIGN BREAKDOWN -->
+<section id="breakdown">
+  <div class="section-inner">
+    <p class="section-label">Process</p>
+    <h2>Design Thinking</h2>
+
+    <div class="breakdown-block">
+      <h3>Why I designed [Event/System] the way I did</h3>
+      <p>
+        This is the most important section for a hybrid role. Walk through one decision from your CK3 mod —
+        not just what you built, but why. What player experience were you designing toward?
+        What constraints were you working within? What did you cut, and why?
+      </p>
+      <div class="callout">
+        <div class="callout-icon">◆</div>
+        <p>
+          <strong>Example framing:</strong> "I wanted players to feel the weight of [X] without stopping
+          the pacing of the event chain, so I moved [decision] to a follow-up event triggered 30 days later —
+          giving the player time to forget before the consequence landed."
+        </p>
+      </div>
+    </div>
+
+    <div class="breakdown-block">
+      <h3>Narrative systems I worked with</h3>
+      <p>
+        Briefly describe the CK3 scripting system and how you used it — triggers, effects, mtth weights,
+        flags. Hiring managers who don't know CK3 will still understand that you think in systems.
+        Those who do know it will be impressed.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <p class="section-label">Background</p>
+    <h2>About</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          [2–3 sentences about who you are. Mention your career switch honestly — it can be a strength.
+          What did you do before, and how does it inform your design thinking?]
+        </p>
+        <p>
+          I've spent [timeframe] contributing to [mod name], writing event chains and designing
+          systems for [briefly describe mod scope]. That work taught me how narrative and mechanics
+          have to earn each other's trust.
+        </p>
+        <p>
+          I'm currently looking for roles in narrative design and game writing where I can
+          help build worlds that feel alive to players.
+        </p>
+      </div>
+      <div class="skills-col">
+        <h3>Skills &amp; Tools</h3>
+        <div class="skill-item"><span>Narrative Design</span><span>Primary</span></div>
+        <div class="skill-item"><span>Branching Dialogue</span><span>Primary</span></div>
+        <div class="skill-item"><span>Worldbuilding &amp; Lore</span><span>Primary</span></div>
+        <div class="skill-item"><span>CK3 Script / Paradox modding</span><span>Experienced</span></div>
+        <div class="skill-item"><span>Game Design Documentation</span><span>Developing</span></div>
+        <div class="skill-item"><span>Twine / Ink</span><span>Familiar</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <p class="section-label">Get in Touch</p>
+    <h2>Contact</h2>
+    <p>Open to full-time, contract, and remote narrative roles. Always happy to talk about games, writing, or design.</p>
+    <div class="contact-links">
+      <a href="mailto:your@email.com">your@email.com</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">GitHub</a>
+      <a href="#">Mod Page</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  &copy; 2026 [Your Name] &nbsp;·&nbsp; Narrative Designer
+</footer>
+
+</body>
+</html>
